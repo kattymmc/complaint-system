@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header">
+        <h3><i class="fa fa-angle-right"></i> <b>Complaint Details</b></h3>
+    </div>
+    <div class="card-body" style="padding: 0">
+        <table class="table table-bordered table-striped table-light">
+            <thead>
+            </thead>
+            <tbody>
+                <tr>
+                    <th align="center">Complaint Id</th>
+                    <td>{{complaint._id}}</td>
+                </tr>
+                <tr>
+                    <th align="center">Reg. Date</th>
+                    <td>{{complaint.createdAt}}</td>
+                </tr>
+                <tr>
+                    <th align="center">Service</th>
+                    <td>{{service.name}}</td>
+                </tr>
+                <tr>
+                    <th align="center">Priority</th>
+                    <td>{{complaint.priority}}</td>
+                </tr>
+                <tr>
+                    <th align="center">Complaint Details</th>
+                    <td>{{complaint.description}}</td>
+                </tr>
+                <tr>
+                    <th align="center">Remark</th>
+                    {{#if complaint.remark}}
+                    <td>{{complaint.remark}}<br />
+                        <b>Remark Date:</b>{{complaint.updatedAt}}</td>
+                    {{else}}
+                    <td>Not Yet</td>
+                    {{/if}}
+                </tr>
+                <tr>
+                    <th align="center">Final Status</th>
+                    <td>
+                        <p style="color:red">{{complaint.status}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

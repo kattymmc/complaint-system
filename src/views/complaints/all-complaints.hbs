@@ -1,0 +1,43 @@
+
+<div class="card">
+    <div class="card-header">
+        <h3><i class="fa fa-angle-right"></i> Your Complaint History</h3>
+    </div>
+    <div class="card-body" style="padding: 0">
+        <table class="table table-hover">
+            <thead>
+                <tr style="text-align: center">
+                    <th style="text-align: center">Complaint Number</th>
+                    <th style="text-align: center">Reg Date</th>
+                    <th style="text-align: center">last Updation date</th>
+                    <th style="text-align: center">Status</th>
+                    <th style="text-align: center">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {{#each complaints}}
+                <tr>
+                    <td align="center">{{@index}}</td>
+                    <td align="center">{{createdAt}}</td>
+                    <td align="center">{{updatedAt}}</td>
+                    <td align="center">
+                        {{#ifEquals status "Not Processed Yet"}}
+                        <button type="button" class="btn btn-danger">{{status}}</button>
+                        {{/ifEquals}}
+                        {{#ifEquals status "In Process"}}
+                        <button type="button" class="btn btn-warning" style="color: white">{{status}}</button>
+                        {{/ifEquals}}
+                        {{#ifEquals status "Closed"}}
+                        <button type="button" class="btn btn-success">{{status}}</button>
+                        {{/ifEquals}}
+                    <td align="center">
+                        <a href="/complaints/details/{{_id}}"><button type="button" class="btn btn-primary">View
+                                Details</button></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

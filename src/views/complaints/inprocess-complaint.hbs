@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header">
+        <h3><i class="fa fa-angle-right"></i> Pending Complaints</h3>
+    </div>
+    <div class="card-body" style="padding: 0">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Complaint No</th>
+                    <th>Complainant Name</th>
+                    <th>Reg Date</th>
+                    <th>Priority</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each complaints}}
+                <tr>
+                    <td>{{@index}}</td>
+                    <td>{{complainant}}</td>
+                    <td>{{createdAt}}</td>
+                    {{#ifEquals priority 'Important'}}
+                    <td><button type="button" class="btn btn-danger">High</button></td>
+                    {{/ifEquals}}
+                    {{#ifEquals priority 'Medium'}}
+                    <td><button type="button" class="btn btn-warning" style="color: white;">Medium</button></td>
+                    {{/ifEquals}}
+                    {{#ifEquals priority 'Not Important'}}
+                    <td><button type="button" class="btn btn-success">Low</button></td>
+                    {{/ifEquals}}
+                    <!--td><button type="button" class="btn btn-warning" style="color: white">In Process</button></td-->
+                    <td> <a href="/complaints/details-admin/{{_id}}"> <button type="button" class="btn btn-primary">View Details</button></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

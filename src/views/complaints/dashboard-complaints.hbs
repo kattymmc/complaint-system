@@ -1,0 +1,38 @@
+<!--div style="background-color:white; height: 550px; border: 1px solid #BFBFBF;
+" class="box2"-->
+<div style="display: flex; justify-content: center;" >
+{{#each complaintsCount}}
+
+{{#ifEquals _id 'In Process'}}
+<div class="card" style="width: 18rem; display: inline-block; margin-right: 10px; text-align:center;  box-shadow: 4px 4px 10px #aaaaaa; " >
+  <img class="card-img-top" src="/img/inprocess.png" alt="Card image cap" style="width: 50%;  margin-top:10px">
+  <div class="card-body">
+    <h5 class="card-title">{{_id}}</h5>
+    <p class="card-text">{{count}} Complaints {{_id}}</p>
+    <a href="/complaints/in-process" class="btn btn-warning" style="color: white">Go somewhere</a>
+  </div>
+</div>
+{{/ifEquals}}
+{{#ifEquals _id 'Not Processed Yet'}}
+<div class="card" style="width: 18rem; display: inline-block; margin-right: 10px; text-align:center;  box-shadow: 4px 4px 10px #aaaaaa; " >
+  <img class="card-img-top" src="/img/notprocess.png" alt="Card image cap" style="width: 50%; margin-top:10px">
+  <div class="card-body">
+    <h5 class="card-title">{{_id}}</h5>
+    <p class="card-text">{{count}} Complaints {{_id}}</p>
+    <a href="/complaints/not-process" class="btn btn-danger">Go somewhere</a>
+  </div>
+</div>
+{{/ifEquals}}
+{{#ifEquals _id 'Closed'}}
+<div class="card" style="width: 18rem; display: inline-block; margin-right: 10px; text-align:center;  box-shadow: 4px 4px 10px #aaaaaa; " >
+  <img class="card-img-top" src="/img/closed.png" alt="Card image cap" style="width: 50%;  margin-top:10px">
+  <div class="card-body">
+    <h5 class="card-title">{{_id}}</h5>
+    <p class="card-text">{{count}} Complaints {{_id}}</p>
+    <a href="/complaints/closed" class="btn btn-success">Go somewhere</a>
+  </div>
+</div>
+{{/ifEquals}}
+{{/each}}
+</div>
+<!--/div-->

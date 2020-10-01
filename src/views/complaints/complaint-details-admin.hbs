@@ -1,0 +1,147 @@
+<div class="card">
+    <div class="card-header">
+        <h3><i class="fa fa-angle-right"></i> <b>Complaint Details</b></h3>
+    </div>
+<div class="card-body" style="padding: 0">
+<table cellpadding="0" cellspacing="0" border="0"
+    class="datatable-1 table table-bordered table-striped	 display table-light" width="100%">
+    <tbody>
+        <tr>
+            <td><b>Complaint Id</b></td>
+            <td>{{complaint._id}}</td>
+            <td><b>Complainant Name</b></td>
+            <!--td>{{complaint.complainant}}</td-->
+            <td>{{userComplainant.name}}</td>
+        </tr>
+        <tr>
+            <td><b>Service</b></td>
+            <td>{{service.name}}</td>
+            <td><b>Priority</b></td>
+            <td>{{complaint.priority}}</td>
+        </tr>
+        <tr>
+            <td><b>Status</b></td>
+            <td><p style="color:red">{{complaint.status}}</p></td>
+            <td><b>Reg Date</b></td>
+            <td>{{complaint.createdAt}}</td>
+        </tr>
+        <tr>
+            <td><b>Complaint Details </b></td>
+            <td colspan="5"> {{complaint.description}}</td>
+        </tr>
+        </tr>
+        <tr>
+            <td><b>Remark</b></td>
+            {{#if complaint.remark}}
+            <td colspan="5">{{complaint.remark}}</br> <b>Remark Date :</b>{{complaint.updatedAt}}</td>
+            {{else}}
+            <td colspan="5">Not Yet</td>
+            {{/if}}
+        </tr>
+        <tr>
+            <td><b>Action</b></td>
+            {{#ifNotEq complaint.status "Closed"}}
+            <td>
+                <button data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-primary">Take Action</button>
+                <!--a title="Update complaint" href="/complaints/take-action/{{complaint._id}}">
+                    <button type="button" class="btn btn-primary">Take Action</button>
+                    </td>
+                </a-->
+            {{/ifNotEq}}
+            </td>
+            <td colspan="4">
+                <a title="Update complaint">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" type="button">View
+                        User Details</button></a></td>
+        </tr>
+</table>
+</div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img class="mx-auto d-block logo m-4" src="/img/signin-logo.png" alt="Logo">
+                <table class="table">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Name</th>
+                            <td>{{userComplainant.name}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Lastname</th>
+                            <td>{{userComplainant.lastname}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Telephone</th>
+                            <td>{{userComplainant.telephone}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Address</th>
+                            <td>{{userComplainant.address.street}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Email</th>
+                            <td>{{userComplainant.email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!--button type="button" class="btn btn-primary">Save changes</button-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Take Action</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/complaints/edit/{{complaint._id}}?_method=PUT" method="POST">
+            <div class="modal-body">
+
+                
+                <div class="form-group">
+                    <label class="control-label">Status</label>
+                    <select name="status" id="status" class="form-control" required>
+                        <option value="">--Select Status--</option>
+                        <option value="Not Processed Yet">Not processed yet</option>
+                        <option value="In Process">In process</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Remark</label>
+                    <textarea style="resize: none;" rows="5" name="remark" class="form-control" placeholder="Remark"></textarea>
+                </div>   
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

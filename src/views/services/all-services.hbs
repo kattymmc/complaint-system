@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header">
+        <h3><i class="fa fa-angle-right"></i> Manage Services</h3>
+    </div>
+    <table cellpadding="0" cellspacing="0" border="0"
+        class="table table-hover" width="100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Service</th>
+                <th>Description</th>
+                <th>Creation date</th>
+                <th>Last Updated</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {{#each services}}
+            <tr>
+                <td>{{@index}}</td>
+                <td>{{name}}</td>
+                <td>{{description}}</td>
+                <td>{{createdAt}}</td>
+                <td>{{updatedAt}}</td>
+                <td style="width: 110px;">
+                    <a href="/services/edit/{{_id}}"><button style="float: left;" class="btn btn-primary"><i
+                                class="fas fa-edit"></i></button></a>
+                    <form style="float: left;" action="/services/delete/{{_id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+    </table>
+</div>

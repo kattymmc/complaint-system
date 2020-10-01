@@ -1,0 +1,46 @@
+<div class="col-md-8 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>New Complaint</h3>
+        </div>
+        <div class="card-body">
+            <form action="/complaints/new-complaint" method="POST">
+
+                <div class="form-group">
+                    <label class="control-label">Complaint Title</label>
+                    <input type="text" name="name" class="form-control" placeholder="Name" autofocus required/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Category</label>
+                    <select name="service" id="service" class="form-control" required>
+                        <option value="">--Select Service--</option>
+                        {{#each services}}
+                        <option value="{{_id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Priority</label>
+                    <select name="priority" id="priority" class="form-control" required>
+                        <option value="">--Select Priority--</option>
+                        <option value="Important">Important</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Not Important">Not Important</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Description</label>
+                    <textarea style="resize: none;" rows="5" name="description" class="form-control" placeholder="Description" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

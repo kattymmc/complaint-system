@@ -1,0 +1,24 @@
+ <div class="col-md-9 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Edit Service</h3>
+        </div>
+        <div class="card-body">
+            <form action="/services/edit/{{service._id}}?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label class="control-label">Service Name</label>
+                    <input type="text" name="name" class="form-control" value="{{service.name}}" autofocus required />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Description</label>
+                    <textarea  style="resize: none;" rows="5" name="description" class="form-control" required>{{service.description}}</textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
